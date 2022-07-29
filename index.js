@@ -7,11 +7,13 @@ function fun() {
     // console.log("hello all !");
     var buttonPressed = this.innerHTML;
     makeSound(buttonPressed)
+    buttonAni(buttonPressed)
 
 }
-document.addEventListener('keypress',fun2)
+document.addEventListener('keypress', fun2)
 function fun2(event) {
     makeSound(event.key)
+    buttonAni(event.key)
     console.log(event.key)
 }
 function makeSound(keys) {
@@ -49,6 +51,14 @@ function makeSound(keys) {
         default:
             break;
     }
+}
+function buttonAni(curkey) {
+    var keyClicked = document.querySelector('.' + curkey);
+    keyClicked.classList.add('pressed')
+    setTimeout(function () {
+        keyClicked.classList.remove('pressed')
+    }, 100);
+
 }
 
 
